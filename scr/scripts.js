@@ -54,8 +54,29 @@ function convertToPhonetic() {
     document.getElementById('outputArea').innerText = outputText.trim();
 }
 
+// Function to convert text to kebab-case
+function convertToKebabCase() {
+    const inputText = document.getElementById('inputText').value.trim();
+    const kebabCaseText = inputText.replace(/\s+/g, '-').toLowerCase();
+    document.getElementById('outputArea').innerText = kebabCaseText;
+}
+
 // Function to clear the form
 function clearForm() {
     document.getElementById('inputText').value = '';
     document.getElementById('outputArea').innerText = '';
 }
+
+// Event listener for form submission
+document.getElementById('phoneticForm').addEventListener('submit', function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+    
+    // Call the convertToPhonetic function
+    convertToPhonetic();
+});
+
+// Event listener for kebab-case conversion
+document.getElementById('kebabCaseBtn').addEventListener('click', function() {
+    convertToKebabCase();
+});
