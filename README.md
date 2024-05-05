@@ -24,8 +24,8 @@ This web application allows users to convert text into NATO phonetic alphabet or
 - HTML5
 - CSS3
 - JavaScript
-- Bootstrap 3 (for CSS)
-- jQuery (for JavaScript)
+- Json
+
 
 ## Installation
 
