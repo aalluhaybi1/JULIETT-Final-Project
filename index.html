@@ -1,77 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Phonetic Generator</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap 3 CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <!-- Bootstrap 5 JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="sty/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetic Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Phonetic Generator</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="https://github.com/aalluhaybi1/JULIETT-Final-Project.git">Github REPO</a></li>
-          <li><a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fgithub.com%2Faalluhaybi1%2FJULIETT-Final-Project.git">Nu Link Checker</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-<div class="container mt-5">
-    <!-- Prompt for the User -->
-    <div class="alert alert-info" role="alert">
-        NATO phonetic: a great way to disambiguate spoken letters. Devs, like the military, like jargon, abbreviations, & clarity. I learned recently there's a 'civilian' phonetic too. This is important when talking with devs (and users) to make sure you get variable names, filenames, and all that correct too. Let's create our own phonetic generator!
-    </div>
-
-    <!-- Form to input text -->
-    <form id="phoneticForm">
-        <div class="mb-3">
-            <label for="inputText" class="form-label">Enter text to convert:</label>
-            <input type="text" class="form-control" id="inputText" placeholder="Enter text">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <h1>Phonetic Generator</h1>
+            <p>A tool to convert text into phonetic equivalents</p>
         </div>
-        <button type="button" class="btn btn-primary" id="convertBtn">Convert to NATO Phonetic</button>
-        <button type="button" class="btn btn-primary" id="kebabCaseBtn">Convert to Kebab Case</button>
-        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-    </form>
+    </header>
 
-    <!-- Display Area -->
-    <div class="mt-3" id="outputArea">
-        <!-- Converted text will be displayed here -->
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-light text-center text-lg-start mt-5">
-    <div class="container p-4">
-        <div class="text-center">
-            <a href="https://www.nato.int/" target="_blank">NATO Official Site</a> |
-            <a href="https://github.com/aalluhaybi1" target="_blank">Github Profile</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/aalluhaybi1/JULIETT-Final-Project.git" target="_blank" rel="noopener noreferrer">Repo</a>
+                    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fgithub.com%2Faalluhaybi1%2FJULIETT-Final-Project.git">Nu Link Checker</a></li>
+                </li>
+            </ul>
         </div>
-    </div>
-</footer>
+    </nav>
 
-<!-- Bootstrap 5 JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JavaScript -->
-<script src="scr/scripts.js"></script>
+    <main class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <label for="textInput" class="form-label">Enter Text:</label>
+                <input type="text" id="textInput" class="form-control mb-3" placeholder="Type here...">
+                <div class="form-check form-switch mb-3">
+                    <div class="form-group">
+                        <label for="conversionType">Select Conversion Type:</label>
+                        <select class="form-control" id="conversionType">
+                            <option value="nato">NATO Phonetic Alphabet</option>
+                            <option value="kebabCase">Kebab Case</option>
+                        </select>
+                    </div>
+              
+                <button id="generateButton" class="btn btn-primary">Generate</button>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Phonetic Equivalents</h5>
+                <button id="clearListButton" class="btn btn-danger mb-3">Clear List</button>
+                <ul id="outputList"></ul>
+            </div>
+        </div>
+    </main>
+<footer>
+    <div class="row">
+        <div class="col-md-10">
+          <div id="section3" class="card m-8 bg-secondary text-white">
+            <div class="card-body">
+              <h1>Contact Information</h1>
+                <a href="https://www.linkedin.com/feed/" target="_blank" class="btn btn-info"><img src="https://img.freepik.com/premium-vector/linkedin-3d-logo-icon-social-media-application_534308-21954.jpg?w=740" alt="Code Academy logo" class="img-fluid mx-auto rounded" width="30"> LinkedIn</a>
+                 <a href="https://github.com/aalluhaybi1" target="_blank" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" height="1.75em" viewBox="0 0 496 512"> Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>GitHub</a>
+                 <a href="mailto:aalluhaybi@una.edu" target="_blank" class="btn btn-info"><img src="https://img.freepik.com/premium-vector/icon-symbol-3d-vector_569389-4234.jpg?size=626&ext=jpg&ga=GA1.2.400356569.1714901162&semt=ais" alt="Code Academy logo" class="img-fluid mx-auto rounded" width="30">Email</a>
+              </div>
+              
+          </div> 
+      </div> 
+      <div class="text-center p-3">
+        © 2024 Copyright:
+        <a class="text-body" href="https://github.com/aalluhaybi1" target="_blank">Ayman aalluhaybi</a> |
+        <a class="text-body" href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fgithub.com%2Faalluhaybi1%2FJULIETT-Final-Project.git"
+            target="_blank">Check this page's validity</a>
+    </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
